@@ -5,6 +5,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
+      
+      <button (click)="handleClick()">
+      Change name
+      </button>
       <input 
         type="text" 
         [value]="name"
@@ -19,6 +23,9 @@ export class AppComponent {
   name: string;
   constructor() {
     this.name = 'Steven';
+  }
+  handleClick() {
+    this.name = 'Király'
   }
   handleBlur(event: any) {
     this.name = event.target.value;    
