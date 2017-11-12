@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
       <input 
         type="text" 
         [value]="name"
+        (input)="handleInput($event)"
         (blur)="handleBlur($event)">
       <div> {{ name }} </div> 
     </div>
@@ -20,6 +21,10 @@ export class AppComponent {
     this.name = 'Steven';
   }
   handleBlur(event: any) {
+    this.name = event.target.value;    
+    console.log(event);
+  }
+  handleInput(event: any) {
     this.name = event.target.value;    
     console.log(event);
   }
