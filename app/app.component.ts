@@ -5,12 +5,18 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      <button (click)="handleClick()">
-      Get values
-      </button>
       <input 
-        type="text">
-      <div> {{ name }} </div> 
+        type="text"
+        [value]="name"
+        (input)="handleChange($event.target.value)">
+      
+        <template [ngIf]="name.length > 2">
+          Searching for ... {{ name }}
+        </template>
+      
+        <div *ngIf="name.length > 2"> 
+          Searching for ... {{ name }}
+        </div> 
     </div>
   `
 })
@@ -18,9 +24,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   name: string;
   constructor() {
-    this.name = 'Steven';
+    this.name = '';
   }
-  handleClick() {
-    this.name = 'Király';
+  handleClick(value: string) {
+    console.log(value);
+  }
+
+  handleChange(value: string) {
+    this.name = value;
+    console.log(value);
   }
 }
