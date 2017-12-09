@@ -12,7 +12,20 @@ interface Passenger {
   template: `
     <div class="app">
       <h3>Airline Passengers</h3>
-      <h2>{{ passengers[0].fullname }}</h2>  
+      <ul>
+        <template ngFor let-passenger let-i="index" [ngForOf]="passengers">
+          <li>
+            {{ i }}: {{ passenger.fullname }}
+          </li>
+        </template>
+      </ul>
+      <h3>Airline Passengers</h3>
+      <ul>
+        <li *ngFor="let passenger of passengers; let i = index;">
+         {{ i }}: {{ passenger.fullname }}
+        </li>
+      </ul>
+    
     </div>
   `
 })
